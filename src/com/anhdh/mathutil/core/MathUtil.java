@@ -22,22 +22,36 @@ public class MathUtil {
 //    0! = 1! =1
 //    Vì giai thừa tăng cực nhanh, nên 21! đã vượt 18 số 0 tràn kiểu long
 //    Ta không tính 21! trở lên
+    
+    //SỬA HÀM TÍNH GIAI THỪA = CÁCH XÀI ĐỆ QUY
+//    n! = 1.2.3.4.5...n
+//    n! = n . (n-1)!
+//    n! = return n . (n-1)!
+//    ĐỆ QUY: GỌI LẠI CHÍNH MÌNH VỚI 1 QUY MÔ KHÁC/NHỎ HƠN 
     public static long getFactorial(int n){
         if (n < 0 || n > 20) {
             throw new IllegalArgumentException("Invalid n. n must be between 0..20 (ngu vãi lồn)");
         }
-        if (n == 0 || n == 1) {
-            return 1;
-        }
-        //sống sót đến dòng này, sure n = 2...20!!!
-        //cấm ko xài else nữa khi hàm đã có return phía trước
-        long product = 1; //biến cộng dồn, nhân dồn, biến con heo đất
-                                //acc/accumulation/gửi góp
-        for (int i = 2; i <= n; i++) 
-            product *= i;
         
-        return product;
+        return n*getFactorial(n-1);
     }
+    
+//    public static long getFactorial(int n){
+//        if (n < 0 || n > 20) {
+//            throw new IllegalArgumentException("Invalid n. n must be between 0..20 (ngu vãi lồn)");
+//        }
+//        if (n == 0 || n == 1) {
+//            return 1;
+//        }
+//        //sống sót đến dòng này, sure n = 2...20!!!
+//        //cấm ko xài else nữa khi hàm đã có return phía trước
+//        long product = 1; //biến cộng dồn, nhân dồn, biến con heo đất
+//                                //acc/accumulation/gửi góp
+//        for (int i = 2; i <= n; i++) 
+//            product *= i;
+//        
+//        return product;
+//    }
     
 //    Ta sẽ học sơ về khái niệm TDD - TEST DRIVEN DEVELOPMENT (Green - Refactor - Red)
 //    là một kỹ thuật lập trình/áp dụng cho dân dev để gia 
